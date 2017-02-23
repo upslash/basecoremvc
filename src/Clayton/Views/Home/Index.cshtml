@@ -1,0 +1,22 @@
+﻿@{ 
+    Layout = "_Layout";
+}
+
+@model Clayton.Models.HomeViewModel
+
+
+<div id="content">
+
+    <div id="header">
+        <h3>Welcome to @ViewBag.SiteName</h3>
+    </div>
+    
+    <div id="blogposts">
+        @foreach (var post in Model.Posts)
+        {
+            <h3>@post.Name</h3>
+            <p>@post.Content</p>
+        }
+    </div>
+   
+</div>
