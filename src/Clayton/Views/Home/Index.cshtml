@@ -5,18 +5,17 @@
 @model Clayton.Models.HomeViewModel
 
 
-<div id="content">
-
-    <div id="header">
-        <h3>Welcome to @ViewBag.SiteName</h3>
-    </div>
-    
-    <div id="blogposts">
-        @foreach (var post in Model.Posts)
-        {
-            <h3>@post.Name</h3>
-            <p>@post.Content</p>
-        }
-    </div>
-   
+<div class="jumbotron">
+    <h1 class="display-3">Welcome to @ViewBag.SiteName</h1>
+    <p class="lead">This is a work in progress. Eventually, this site will be used as Clayton's blog.</p>
 </div>
+
+    
+<div id="blogposts">
+    @foreach (var post in Model.Posts)
+    {
+        <h3>@post.Name</h3>
+        <p>@post.Content</p>
+    }
+</div>
+   

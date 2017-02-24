@@ -1,0 +1,16 @@
+﻿
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<IdentityUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li><a asp-controller="Account" asp-action="Logout">Log off</a></li>
+}
+else
+{
+    <li><a id="registerLink" asp-controller="Account" asp-action="Register" class="navbar-link">Register</a></li>
+    <li><a id="loginLink" asp-controller="Account" asp-action="Login" class="navbar-link">Log in</a></li>
+   
+}

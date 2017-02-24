@@ -11,12 +11,14 @@ using Clayton.Models;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Clayton
 {
     public class Startup
     {
         private IConfigurationRoot _configurationRoot;
+        private IHostingEnvironment _currentEnvironment;
 
         public Startup(IHostingEnvironment hostingEnvironment)
         {
@@ -26,6 +28,9 @@ namespace Clayton
                 .SetBasePath(hostingEnvironment.ContentRootPath)
                 .AddJsonFile("appsettings.json")
                 .Build();
+
+            // Persist current environment
+            _currentEnvironment = hostingEnvironment;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -35,9 +40,28 @@ namespace Clayton
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
 
+            // Add support for ASP.Net Identity & use database from AppDbContext
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Disable password complexity requirements in development
+                // http://stackoverflow.com/questions/32548948/how-to-get-the-development-staging-production-hosting-environment-in-configurese
+                if (_currentEnvironment.IsDevelopment())
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                }
+                
+            });
+
             // Repositories
-            // We can switch between mock repo and real here. 
-            // No need to go through our entire app and change.
+            // We can switch between mock repo and real here.
+            // Because of dependency injection, we don't have to go through our entire app
+            // and change references if we want to use MockData vs. Real data.
             // services.AddTransient<IPostRepository, MockPostRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
 
@@ -48,10 +72,17 @@ namespace Clayton
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
-            app.UseStaticFiles(); 
+            app.UseStaticFiles();
+
+            // Be sure to call app.Useidentity() BEFORE app.UseMvc().
+            // Otherwise you might get an error message:
+            // InvalidOperationException: No authentication handler is configured to handle the scheme: Identity.Application
+            // http://stackoverflow.com/questions/38968422/no-authentication-handler-is-configured-to-handle-the-scheme
+
+            app.UseIdentity(); 
             app.UseMvcWithDefaultRoute(); // Sets up MVC middleware with default schema. Routing would need to be setup.
 
-            DbInitializer.Seed(app); // Check if data exists, seed if it doesn't.
+            DbInitializer.Seed(app); // Seed data if needed
         }
     }
 }
