@@ -18,9 +18,9 @@ namespace Clayton.Models
             {
                 context.AddRange
                 (
-                    new Post() { Name = "Today I learned ASP.NET", Content = "On a sunny day, in the year 2017, Clayton brought it opon himself to learn MVC." },
-                    new Post() { Name = "Today I learned Linux", Content = "On a clody day, in the year 2016, Clayton decided to learn Linux." },
-                    new Post() { Name = "Today I learned iOS Development", Content = "On a stormy day, in the year 2015, Clayton made the terrible choice is learning iOS." }
+                    new Post() { Title = "Today I learned ASP.NET", Content = "On a sunny day, in the year 2017, Clayton brought it opon himself to learn MVC." },
+                    new Post() { Title = "Today I learned Linux", Content = "On a clody day, in the year 2016, Clayton decided to learn Linux." },
+                    new Post() { Title = "Today I learned iOS Development", Content = "On a stormy day, in the year 2015, Clayton made the terrible choice is learning iOS." }
                 );
 
                 context.SaveChanges();

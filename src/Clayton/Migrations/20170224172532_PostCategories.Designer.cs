@@ -8,9 +8,10 @@ using Clayton.Models;
 namespace Clayton.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170224172532_PostCategories")]
+    partial class PostCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -25,7 +26,7 @@ namespace Clayton.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Clayton.Models.Post", b =>
@@ -45,7 +46,7 @@ namespace Clayton.Migrations
 
                     b.HasKey("PostId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Clayton.Models.PostCategory", b =>
