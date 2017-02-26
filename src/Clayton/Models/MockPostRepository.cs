@@ -29,7 +29,17 @@ namespace Clayton.Models
             }
         }
 
+        public void DeletePost(Post post)
+        {
+            throw new NotImplementedException();
+        }
+
         public Post GetPostById(int postId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Post UpdatePost(Post post)
         {
             throw new NotImplementedException();
         }

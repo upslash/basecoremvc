@@ -4,13 +4,11 @@
 
 @model Clayton.Models.HomeViewModel
 
+@*<div class="jumbotron">
+    <h1>Navbar example</h1>
+    <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
+</div>*@
 
-<div class="jumbotron">
-    <h1 class="display-3">Welcome to @ViewBag.SiteName</h1>
-    <p class="lead">This is a work in progress. Eventually, this site will be used as Clayton's blog.</p>
-</div>
-
-    
 <div id="blogposts">
     @foreach (var post in Model.Posts)
     {

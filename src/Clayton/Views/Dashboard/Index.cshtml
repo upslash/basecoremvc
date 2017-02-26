@@ -1,0 +1,29 @@
+﻿@model Clayton.Models.DashboardViewModel
+
+
+<button type="button" class="btn btn-primary">New Post</button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Post Title</th>
+            <th>Post Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var post in Model.Posts)
+        {
+            <tr>
+                <th>@post.Title</th>
+                <td>@post.Content</td>
+                <td>
+                    <a class="btn btn-sm btn-primary"asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@post.PostId">Edit</a>
+                    <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

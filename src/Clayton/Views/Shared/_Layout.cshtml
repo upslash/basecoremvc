@@ -13,33 +13,27 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
-        <div class="container">
-            @*<div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Project name</a>
-            </div>*@
 
-            <nav class="navbar fixed-top navbar-light bg-faded">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        @await Html.PartialAsync("LoginPartial")
-                    </ul>
-                </div>
-            </nav>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse mb-4">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">Clayton's Website</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+            <ul class="navbar-nav mr-auto">
+                @*<li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>*@
+                @await Html.PartialAsync("LoginPartial")
+            </ul>
+
         </div>
     </nav>
+
 
     <div class="container">
         @RenderBody()
     </div>
+
 
 </body>
 </html>

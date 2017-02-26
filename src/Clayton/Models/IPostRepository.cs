@@ -12,5 +12,9 @@ namespace Clayton.Models
         IEnumerable<Post> PostsOftheWeek { get; }
 
         Post GetPostById(int postId);
+
+        Post UpdatePost(Post post);
+
+        void DeletePost(Post post);
     }
 }

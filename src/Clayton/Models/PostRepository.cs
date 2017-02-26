@@ -34,11 +34,29 @@ namespace Clayton.Models
             }
         }
 
+        public void DeletePost(Post post)
+        {
+            var dataPost = _appDbContext.Posts.Where(x => x.PostId == post.PostId).FirstOrDefault();
+            if (dataPost != null)
+            {
+                dataPost.DeletedDate = DateTime.Now;
+                _appDbContext.SaveChanges();
+            }
+            else
+            {
+                // Add error handling
+            }
+            
+        }
+
         public Post GetPostById(int postId)
+        {
+            return _appDbContext.Posts.FirstOrDefault(x => x.PostId == postId);
+        }
+
+        public Post UpdatePost(Post post)
         {
             throw new NotImplementedException();
         }
-
-
     }
 }
