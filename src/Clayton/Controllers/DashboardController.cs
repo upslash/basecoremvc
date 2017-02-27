@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Clayton.Models;
 using Microsoft.AspNetCore.Authorization;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Clayton.Controllers
 {
     [Authorize]
@@ -37,13 +35,45 @@ namespace Clayton.Controllers
         [HttpPost]
         public IActionResult EditPost(Post post)
         {
-            var result = _postRepository.UpdatePost(post);
+            _postRepository.UpdatePost(post);
             return RedirectToAction("Index");
         }
 
         public IActionResult DeletePost(int postId)
         {
+            _postRepository.DeletePost(postId);
+            return RedirectToAction("Index");
+        }
 
+        [HttpGet]
+        public IActionResult AddPost()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddPost(Post post)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(post);
+            }
+
+            _postRepository.AddPost(post);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult HardDelete(int postId)
+        {
+            _postRepository.HardDelete(postId);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult RevivePost(int postId)
+        {
+            _postRepository.RevivePost(postId);
+            return RedirectToAction("Index");
         }
     }
 }

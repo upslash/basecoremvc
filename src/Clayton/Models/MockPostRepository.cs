@@ -29,7 +29,12 @@ namespace Clayton.Models
             }
         }
 
-        public void DeletePost(Post post)
+        public Post AddPost(Post post)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePost(int postId)
         {
             throw new NotImplementedException();
         }
@@ -39,7 +44,17 @@ namespace Clayton.Models
             throw new NotImplementedException();
         }
 
-        public Post UpdatePost(Post post)
+        public void HardDelete(int postId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RevivePost(int postId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePost(Post post)
         {
             throw new NotImplementedException();
         }

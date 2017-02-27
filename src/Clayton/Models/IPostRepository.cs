@@ -13,8 +13,13 @@ namespace Clayton.Models
 
         Post GetPostById(int postId);
 
-        Post UpdatePost(Post post);
+        void UpdatePost(Post post);
 
-        void DeletePost(Post post);
+        void DeletePost(int postId);
+
+        Post AddPost(Post post);
+
+        void HardDelete(int postId);
+        void RevivePost(int postId);
     }
 }

@@ -10,9 +10,10 @@
 </div>*@
 
 <div id="blogposts">
-    @foreach (var post in Model.Posts)
+    @foreach (var post in Model.Posts.Where(x => !x.DeletedDate.HasValue))
     {
         <h3>@post.Title</h3>
+        <p class="postDetails">Created on: @post.Createdate.ToString("MM/dd/yyyy")</p>
         <p>@post.Content</p>
     }
 </div>

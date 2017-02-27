@@ -1,10 +1,8 @@
 ﻿@model Clayton.Models.Post
 
-<form asp-controller="Dashboard" asp-action="EditPost" method="post" role="form" id="EditPostForm">
-    <h4>Edit Post</h4>
 
-    @* Hidden fields for data persistence through post *@
-    @Html.HiddenFor(x => x.PostId)
+<form asp-controller="Dashboard" asp-action="AddPost" method="post" role="form" id="AddPostForm">
+    <h4>Add New Post</h4>
 
     <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -19,14 +17,14 @@
     <div class="form-group">
         <label asp-for="Content" class="control-label"></label>
         <div>
-            <textarea asp-for="Content" class="form-control"></textarea>
+            <textarea asp-for="Content" class="form-control" rows="10"></textarea>
             <span asp-validation-for="Content" class="text-danger"></span>
         </div>
     </div>
 
     <div class="form-group">
         <div>
-            <input type="submit" class="btn btn-primary" value="Save" />
+            <input type="submit" class="btn btn-primary" value="Save New Post" />
         </div>
     </div>
 

@@ -34,9 +34,17 @@ namespace Clayton.Models
             }
         }
 
-        public void DeletePost(Post post)
+        public Post AddPost(Post post)
         {
-            var dataPost = _appDbContext.Posts.Where(x => x.PostId == post.PostId).FirstOrDefault();
+            post.Createdate = DateTime.Now;
+            _appDbContext.Posts.Add(post);
+            _appDbContext.SaveChanges();
+            return post;
+        }
+
+        public void DeletePost(int postId)
+        {
+            var dataPost = _appDbContext.Posts.Where(x => x.PostId == postId).FirstOrDefault();
             if (dataPost != null)
             {
                 dataPost.DeletedDate = DateTime.Now;
@@ -46,7 +54,6 @@ namespace Clayton.Models
             {
                 // Add error handling
             }
-            
         }
 
         public Post GetPostById(int postId)
@@ -54,9 +61,47 @@ namespace Clayton.Models
             return _appDbContext.Posts.FirstOrDefault(x => x.PostId == postId);
         }
 
-        public Post UpdatePost(Post post)
+        public void HardDelete(int postId)
         {
-            throw new NotImplementedException();
+            var dataPost = _appDbContext.Posts.Where(x => x.PostId == postId).FirstOrDefault();
+            if (dataPost != null)
+            {
+                _appDbContext.Posts.Remove(dataPost);
+                _appDbContext.SaveChanges();
+            }
+            else
+            {
+                // Add error handling
+            }
+        }
+
+        public void UpdatePost(Post post)
+        {
+            var dataPost = _appDbContext.Posts.Where(x => x.PostId == post.PostId).FirstOrDefault();
+            if (dataPost != null)
+            {
+                dataPost.Title = post.Title;
+                dataPost.Content = post.Content;
+                _appDbContext.SaveChanges();
+            }
+            else
+            {
+                // Add error handling
+            }
+        }
+
+        public void RevivePost(int postId)
+        {
+            var dataPost = _appDbContext.Posts.Where(x => x.PostId == postId).FirstOrDefault();
+            if (dataPost != null)
+            {
+                dataPost.DeletedDate = null;
+                _appDbContext.SaveChanges();
+            }
+            else
+            {
+                // Add error handling
+            }
         }
     }
 }
