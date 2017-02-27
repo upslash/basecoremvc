@@ -17,7 +17,7 @@
         @foreach (var post in Model.Posts.Where(x => !x.DeletedDate.HasValue))
         {
             <tr>
-                <th>@post.Title</th>
+                <td>@post.Title</td>
                 <td>@post.Createdate</td>
                 <td>
                     <a class="btn btn-sm btn-primary" asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@post.PostId">Edit</a>
@@ -31,51 +31,61 @@
 
 <h3>Recently Deleted</h3>
 
-<table class="table table-danger">
-    <thead>
-        <tr>
-            <th>Post Title</th>
-            <th>Deleted Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @foreach (var post in Model.Posts.Where(x => x.DeletedDate.HasValue))
-        {
+@if (Model.Posts != null && Model.Posts.Where(x => x.DeletedDate.HasValue).Count() > 0)
+{
+    <table class="table table-danger">
+        <thead>
             <tr>
-                <th>@post.Title</th>
-                <td>@post.DeletedDate</td>
-                <td>
-                    @*<a class="btn btn-sm btn-danger postHardDelete" data-postid="@post.PostId" href="">Hard Delete</a>*@
-                    <a class="btn btn-sm btn-danger" data-postid="@post.PostId" asp-controller="Dashboard" asp-action="HardDelete" asp-route-postId="@post.PostId">Hard Delete</a>
-                    <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="RevivePost" asp-route-postId="@post.PostId">Revive Post</a>
-                </td>
+                <th>Post Title</th>
+                <th>Deleted Date</th>
+                <th>Actions</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model.Posts.Where(x => x.DeletedDate.HasValue))
+            {
 
-        }
-    </tbody>
-</table>
+
+                <tr>
+                    <th>@post.Title</th>
+                    <td>@post.DeletedDate</td>
+                    <td>
+                        @*<a class="btn btn-sm btn-danger postHardDelete" data-postid="@post.PostId" href="">Hard Delete</a>*@
+                        <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="HardDelete" asp-route-postId="@post.PostId">Hard Delete</a>
+                        <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="RevivePost" asp-route-postId="@post.PostId">Revive Post</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>You have not deleted anything recently.</p>
+}
+
+
 
 @*<div class="modal fade" id="HardDeleteModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Confirm</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to permanently remove this post?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="ConfirmHardDeleteBtn">Confirm Delete</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="CancelHardDelete">Cancel</button>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to permanently remove this post?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="ConfirmHardDeleteBtn">Confirm Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="CancelHardDelete">Cancel</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 <script>
 
