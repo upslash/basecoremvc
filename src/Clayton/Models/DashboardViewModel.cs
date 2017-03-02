@@ -8,5 +8,7 @@ namespace Clayton.Models
     public class DashboardViewModel
     {
         public List<Post> Posts { get; set; }
+
+        public List<Category> Categories { get; set; }
     }
 }

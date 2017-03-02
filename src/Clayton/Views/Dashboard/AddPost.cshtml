@@ -1,4 +1,4 @@
-﻿@model Clayton.Models.Post
+﻿@model Clayton.Models.PostViewModel
 
 
 <form asp-controller="Dashboard" asp-action="AddPost" method="post" role="form" id="AddPostForm">
@@ -7,18 +7,28 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="Title" class="control-label"></label>
+        <label asp-for="Post.Title" class="control-label"></label>
         <div>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
+            <input asp-for="Post.Title" class="form-control" />
+            <span asp-validation-for="Post.Title" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="SelectedCategories" class="control-label"></label>
+        <div>
+            @*<select multiple="multiple"  class="bootstrapmulti" asp-for="SelectedCategories" asp-items="@(new SelectList(Model.Categories,"CategoryId","Title"))"></select>*@
+            <select multiple="multiple" class="bootstrapmulti" asp-for="SelectedCategories" asp-items="Model.CategoryList"></select>
+            <span asp-validation-for="SelectedCategories" class="text-danger"></span>
         </div>
     </div>
 
     <div class="form-group">
-        <label asp-for="Content" class="control-label"></label>
+        <label asp-for="Post.Content" class="control-label"></label>
         <div>
-            <textarea asp-for="Content" class="form-control tinyeditor" rows="10"></textarea>
-            <span asp-validation-for="Content" class="text-danger"></span>
+            <textarea asp-for="Post.Content" class="form-control tinyeditor" rows="10"></textarea>
+            <span asp-validation-for="Post.Content" class="text-danger"></span>
         </div>
     </div>
 

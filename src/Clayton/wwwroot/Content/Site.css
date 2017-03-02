@@ -1,21 +1,9 @@
-﻿/*.postDetails{
-    font-family: "Open Sans", sans-serif;
-    font-size: 13px;
-    color: #9EABB3;
+﻿/*http://rubentd.com/blog/creating-a-multiplayer-game-with-node-js/*/
+
+#DashboardContainer h3{
+    margin: 20px 0;
 }
 
-#blogposts h3{
-    font-family: "Open Sans", sans-serif;
-    font-size: 50px;
+.dashboardBtn {
+    margin-bottom: 10px;
 }
-
-#blogposts p{
-    font-family: "Merriweather", serif;
-    color: #3A4145;
-    font-size: 18px;
-    line-height: 31px;
-}*/
-
-
-
-/*http://rubentd.com/blog/creating-a-multiplayer-game-with-node-js/*/

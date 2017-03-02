@@ -64,13 +64,22 @@ namespace Clayton
             // and change references if we want to use MockData vs. Real data.
             // services.AddTransient<IPostRepository, MockPostRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
 
             services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            //else
+            //{
+            //    app.UseExceptionHandler("/error");
+            //}
+
             app.UseStatusCodePages();
             app.UseStaticFiles();
 

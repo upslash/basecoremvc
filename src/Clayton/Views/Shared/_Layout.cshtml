@@ -10,12 +10,14 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/lib/tether/dist/css/tether.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
 
     @* Scripts *@
     <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/tinymce/jquery.tinymce.min.js"></script>
     <script src="~/lib/tether/dist/js/tether.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/tinymce/tinymce.min.js"></script>
+    <script src="~/lib/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
 
 </head>
 <body>
@@ -41,7 +43,13 @@
     </div>
 
 
-    <script>tinymce.init({ selector: '.tinyeditor' });</script>
+    <!-- Initialize plugins -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            tinymce.init({ selector: '.tinyeditor' });
+            $('.bootstrapmulti').multiselect();
+        });
+    </script>
 
 </body>
 </html>
