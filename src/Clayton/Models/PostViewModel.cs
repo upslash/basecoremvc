@@ -10,6 +10,7 @@ namespace Clayton.Models
     public class PostViewModel
     {
         public Post Post { get; set; }
+        [Required]
         public string[] SelectedCategories { get; set; }
         public List<SelectListItem> CategoryList { get; set; }
     }

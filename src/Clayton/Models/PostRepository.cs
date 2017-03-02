@@ -9,10 +9,12 @@ namespace Clayton.Models
     public class PostRepository : IPostRepository
     {
         private readonly AppDbContext _appDbContext;
+        private readonly ICategoryRepository _categryRepository;
 
-        public PostRepository(AppDbContext appDbContext)
+        public PostRepository(AppDbContext appDbContext, ICategoryRepository categryRepository)
         {
             _appDbContext = appDbContext;
+            _categryRepository = categryRepository;
         }
 
         public IEnumerable<Post> Posts
@@ -34,10 +36,30 @@ namespace Clayton.Models
             }
         }
 
-        public Post AddPost(Post post)
+        public Post AddPost(PostViewModel model)
         {
+            Post post = new Post();
+            post = model.Post;
+            List<Category> SelectedCategories = new List<Category>();
+            foreach (var catId in model.SelectedCategories)
+            {
+                SelectedCategories.Add(_categryRepository.GetById(Convert.ToInt32(catId)));
+            }
+
+            // Add create date
             post.Createdate = DateTime.Now;
+
+            // Save post so we get the ID
             _appDbContext.Posts.Add(post);
+
+            // Now add many to many cateogry/post relations now that we have the ID
+            PostCategory postCategories = new PostCategory();
+            foreach(var category in SelectedCategories)
+            {
+                post.PostCategory = new List<PostCategory>();
+                post.PostCategory.Add(new PostCategory {CategoryId = category.CategoryId });
+            }
+
             _appDbContext.SaveChanges();
             return post;
         }

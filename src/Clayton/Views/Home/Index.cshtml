@@ -9,6 +9,8 @@
     <p class="lead">I like code. Sometimes I learn fun things and feel like writing. Mostly so I'll remember the second time 
     I need to do something, but also to share so you'll know the first time.
     </p>
+
+    <p>Need to look into the PostIds not going up from 1.</p>
 </div>
 
 <div id="blogposts">
@@ -16,6 +18,19 @@
     {
         <h3>@post.Title</h3>
         <p class="postDetails">Created on: @post.Createdate.ToString("MM/dd/yyyy")</p>
+        
+            @if (post.PostCategory != null)
+            {
+                @foreach (var cat in post.PostCategory)
+                {
+                    <p class="postDetails">
+                        Categories:
+                        @Html.Raw(cat.Category.Title)
+                    </p>
+                }
+            }
+
+
         <p>@Html.Raw(post.Content)</p>
     }
 </div>

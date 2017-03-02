@@ -29,7 +29,7 @@ namespace Clayton.Models
             }
         }
 
-        public Post AddPost(Post post)
+        public Post AddPost(PostViewModel model)
         {
             throw new NotImplementedException();
         }

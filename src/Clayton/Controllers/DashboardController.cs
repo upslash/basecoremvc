@@ -64,30 +64,11 @@ namespace Clayton.Controllers
             {
                 // Reset categories list
                 model.CategoryList = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Title").ToList();
-                if (model.SelectedCategories == null)
-                {
-                    ModelState.AddModelError("SelectedCategories", "Please choose at least one category");
-                }
                 return View(model);
             }
-            // Do something about this ugly double check / repeated code for this model error
-            if(model.SelectedCategories == null || model.SelectedCategories.Count() == 0)
-            {
-                ModelState.AddModelError("SelectedCategories", "Please choose at least one category");
-            }
-            else
-            {
-                List<Category> SelectedCategories = new List<Category>();
-                foreach(var catId in model.SelectedCategories)
-                {
-                    SelectedCategories.Add(_categoryRepository.GetById(Convert.ToInt32(catId)));
-                }
 
-                // Save
-                Post newPost = _postRepository.AddPost(model.Post);
-
-            }
-            
+            // Save
+            Post newPost = _postRepository.AddPost(model);
             return RedirectToAction("Index");
         }
 

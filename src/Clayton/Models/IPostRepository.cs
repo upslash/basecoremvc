@@ -17,7 +17,7 @@ namespace Clayton.Models
 
         void DeletePost(int postId);
 
-        Post AddPost(Post post);
+        Post AddPost(PostViewModel postModel);
 
         void HardDelete(int postId);
         void RevivePost(int postId);
