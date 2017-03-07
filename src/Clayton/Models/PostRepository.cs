@@ -21,7 +21,12 @@ namespace Clayton.Models
         {
             get
             {
-                return _appDbContext.Posts;
+                // http://stackoverflow.com/questions/36725543/many-to-many-query-in-entity-framework-7
+                // Must eager load for many to many
+
+                return _appDbContext.Posts
+                    .Include(x => x.PostCategory)
+                    .ThenInclude(x => x.Category);
             }
         }
 
@@ -49,18 +54,18 @@ namespace Clayton.Models
             // Add create date
             post.Createdate = DateTime.Now;
 
-            // Save post so we get the ID
-            _appDbContext.Posts.Add(post);
-
             // Now add many to many cateogry/post relations now that we have the ID
             PostCategory postCategories = new PostCategory();
-            foreach(var category in SelectedCategories)
+            foreach (var category in SelectedCategories)
             {
                 post.PostCategory = new List<PostCategory>();
-                post.PostCategory.Add(new PostCategory {CategoryId = category.CategoryId });
+                post.PostCategory.Add(new PostCategory { CategoryId = category.CategoryId });
             }
 
+            // Save post so we get the ID
+            _appDbContext.Posts.Add(post);
             _appDbContext.SaveChanges();
+
             return post;
         }
 
@@ -80,7 +85,13 @@ namespace Clayton.Models
 
         public Post GetPostById(int postId)
         {
-            return _appDbContext.Posts.FirstOrDefault(x => x.PostId == postId);
+
+            return _appDbContext.Posts
+                .Where(x => x.PostId == postId)
+                .Include(x => x.PostCategory)
+                .ThenInclude(x => x.Category)
+                .FirstOrDefault();
+
         }
 
         public void HardDelete(int postId)
@@ -97,13 +108,53 @@ namespace Clayton.Models
             }
         }
 
-        public void UpdatePost(Post post)
+        public void UpdatePost(PostViewModel model)
         {
-            var dataPost = _appDbContext.Posts.Where(x => x.PostId == post.PostId).FirstOrDefault();
+            var dataPost = GetPostById(model.Post.PostId);
             if (dataPost != null)
             {
-                dataPost.Title = post.Title;
-                dataPost.Content = post.Content;
+                dataPost.Title = model.Post.Title;
+                dataPost.Content = model.Post.Content;
+
+                List<Category> SelectedCategories = new List<Category>();
+                foreach (var catId in model.SelectedCategories)
+                {
+                    SelectedCategories.Add(_categryRepository.GetById(Convert.ToInt32(catId)));
+                }
+
+                // Add create date
+                dataPost.ModifiedDate = DateTime.Now;
+
+
+                // Attach new list of post categories if they don't exist
+                if(dataPost.PostCategory == null)
+                {
+                    dataPost.PostCategory = new List<PostCategory>();
+                }
+
+                // Add new categories
+                PostCategory postCategories = new PostCategory();
+                foreach (var category in SelectedCategories)
+                {
+                    var exists = dataPost.PostCategory.Any(x => x.CategoryId == category.CategoryId);
+                    if (!exists)
+                    {
+                        dataPost.PostCategory.Add(new PostCategory { CategoryId = category.CategoryId });
+                    }
+                }
+
+                // Remove any that were removed
+                IEnumerable<PostCategory> activeCategories = dataPost.PostCategory.ToList();
+                foreach (var category in activeCategories)
+                {
+                    var exists = SelectedCategories.Any(x => x.CategoryId == category.CategoryId);
+                    if (!exists)
+                    {
+                        dataPost.PostCategory.Remove(category);
+                    }
+                }
+
+                // Save post
                 _appDbContext.SaveChanges();
             }
             else

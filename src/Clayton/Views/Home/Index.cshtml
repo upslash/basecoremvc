@@ -21,13 +21,16 @@
         
             @if (post.PostCategory != null)
             {
-                @foreach (var cat in post.PostCategory)
-                {
-                    <p class="postDetails">
-                        Categories:
-                        @Html.Raw(cat.Category.Title)
-                    </p>
-                }
+
+                <p class="postDetails">
+                    Categories:
+                   
+                    @foreach (var cat in post.PostCategory)
+                    {
+                        <span class="postCategory">@Html.Raw(cat.Category.Title)</span>
+                    }
+                </p>
+
             }
 
 

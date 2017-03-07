@@ -49,9 +49,9 @@ namespace Clayton.Models
             }
         }
 
-        public List<Category> GetAll()
+        public IEnumerable<Category> GetAll()
         {
-            return _appDbContext.Categories.ToList();
+            return _appDbContext.Categories;
         }
 
         public Category GetById(int id)

@@ -25,7 +25,7 @@ namespace Clayton.Controllers
         public IActionResult Index()
         {
             DashboardViewModel model = new DashboardViewModel();
-            model.Posts = _postRepository.Posts.ToList();
+            model.Posts = _postRepository.Posts;
             model.Categories = _categoryRepository.GetAll();
             return View(model);
         }
@@ -33,13 +33,30 @@ namespace Clayton.Controllers
         [HttpGet]
         public IActionResult EditPost(int postId)
         {
-            return View(_postRepository.GetPostById(postId));
+            PostViewModel model = new PostViewModel();
+            model.Post = _postRepository.GetPostById(postId);
+            model.CategoryList = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Title").ToList();
+            List<string> selectedCats = new List<string>();
+            foreach (var cat in model.Post.PostCategory)
+            {
+                selectedCats.Add(cat.CategoryId.ToString());
+            }
+            model.SelectedCategories = selectedCats.ToArray();
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult EditPost(Post post)
+        public IActionResult EditPost(PostViewModel model)
         {
-            _postRepository.UpdatePost(post);
+
+            if (!ModelState.IsValid)
+            {
+                // Reset categories list
+                model.CategoryList = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Title").ToList();
+                return View(model);
+            }
+
+            _postRepository.UpdatePost(model);
             return RedirectToAction("Index");
         }
 

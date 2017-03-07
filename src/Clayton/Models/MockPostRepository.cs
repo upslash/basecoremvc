@@ -54,6 +54,11 @@ namespace Clayton.Models
             throw new NotImplementedException();
         }
 
+        public void UpdatePost(PostViewModel post)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdatePost(Post post)
         {
             throw new NotImplementedException();

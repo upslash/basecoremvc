@@ -7,7 +7,7 @@ namespace Clayton.Models
 {
     public interface ICategoryRepository
     {
-        List<Category> GetAll();
+        IEnumerable<Category> GetAll();
         Category GetById(int id);
         Category Create(Category category);
         void Delete(int categoryId);

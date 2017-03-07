@@ -35,7 +35,6 @@
     <div class="form-group">
         <label asp-for="SelectedCategories" class="control-label"></label>
         <div>
-            @*<select multiple="multiple"  class="bootstrapmulti" asp-for="SelectedCategories" asp-items="@(new SelectList(Model.Categories,"CategoryId","Title"))"></select>*@
             <select multiple="multiple" class="bootstrapmulti" asp-for="SelectedCategories" asp-items="Model.CategoryList"></select>
             <span asp-validation-for="SelectedCategories" class="text-danger"></span>
         </div>
