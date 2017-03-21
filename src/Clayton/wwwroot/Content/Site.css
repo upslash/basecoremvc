@@ -9,10 +9,54 @@
 }
 
 
+/*            LAYOUT = MAIN BLOG AREA                  */
+/*            LAYOUT = MAIN BLOG AREA                  */
+/*            LAYOUT = MAIN BLOG AREA                  */
+/*            LAYOUT = MAIN BLOG AREA                  */
+/*            LAYOUT = MAIN BLOG AREA                  */
+/*            LAYOUT = MAIN BLOG AREA                  */
+
+/* Text */
+
+#blogposts h1, #blogposts  h3, #blogposts  h4, #blogposts h5{
+    font-family: 'Baloo Bhaina', cursive;
+    font-family: 'Muli', sans-serif;
+}
+
+#blogposts p{
+    font-family: 'Crimson Text', serif;
+}
+
+.blogEntry h3{
+    font-size: 35px;
+}
+
+.postContent{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
 .postDetails{
-    font-size: 20px;
+    display: inline;
+    padding: 0px;
+    margin: 0px;
+    color: #444;
+    font-family: 15px;
 }
 
 .postCategory{
     margin-right: 10px;
+}
+
+
+/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
+/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
+/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
+/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
+/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
+/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
+/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
+
+.enhancementContent{
+    margin-left: 50px;
 }

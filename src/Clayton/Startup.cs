@@ -38,7 +38,7 @@ namespace Clayton
 
             // Add DB context to our database
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(_configurationRoot.GetConnectionString("Production")));
 
             // Add support for ASP.Net Identity & use database from AppDbContext
             services.AddIdentity<IdentityUser, IdentityRole>()
@@ -55,7 +55,6 @@ namespace Clayton
                     options.Password.RequireLowercase = false;
                     options.Password.RequireUppercase = false;
                 }
-                
             });
 
             // Repositories
@@ -65,6 +64,7 @@ namespace Clayton
             // services.AddTransient<IPostRepository, MockPostRepository>();
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IEnhancementRepository, EnhancementRepository>();
 
             services.AddMvc();
         }

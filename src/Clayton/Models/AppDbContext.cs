@@ -18,6 +18,10 @@ namespace Clayton.Models
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<Enhancement> Enhancements { get; set; }
+
+        public DbSet<EnhancementProgress> EnhancementProgress { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // DbSet names are now the table name unless you do this

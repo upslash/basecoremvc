@@ -1,0 +1,15 @@
+﻿<h3>Manage Account</h3>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ChangePassModal">
+    Change Password
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ChangePassModal" tabindex="-1" role="dialog" aria-labelledby="ChangePassModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="ChangePasswordDiv">
+            @Html.Partial("_ChangePassword")
+        </div>
+    </div>
+</div>

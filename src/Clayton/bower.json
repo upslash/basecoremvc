@@ -4,6 +4,8 @@
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
     "bootstrap-multiselect": "0.9.13",
-    "tinymce": "4.5.4"
+    "tinymce": "4.5.4",
+    "Font-Awesome": "4.7.0",
+    "jquery-ajax-unobtrusive": "3.2.4"
   }
 }

@@ -1,0 +1,23 @@
+﻿@model Clayton.Models.EnhancementViewModel
+
+<h3>Enhancements planned for project</h3>
+
+
+<p>I have big ideas; good ideas; huge ideas as Trump would say. However I often forget about them when I move from project to project. This page will help me
+    keep track of all of the improvements I want to eventually make to this application.</p>
+
+<a class="btn btn-primary dashboardBtn" asp-controller="Enhancement" asp-action="Add">Add Enhancement</a>
+
+
+
+@foreach (var enhancement in Model.Enhancements)
+{
+    <div class="alert alert-info">
+        @enhancement.Title
+        <a asp-controller="Enhancement" asp-action="Edit" asp-route-id="@enhancement.EnhancementId">Edit</a>
+    </div>
+    <div class="enhancementContent">
+        @Html.Raw(enhancement.Content)
+    </div>
+    
+}

@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 
+    @* Fonts *@
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Crimson+Text|Muli|Open+Sans+Condensed:300" rel="stylesheet">
 
     @* CSS *@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/lib/tether/dist/css/tether.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="~/lib/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
 
     @* Scripts *@
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -18,6 +21,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/tinymce/tinymce.min.js"></script>
     <script src="~/lib/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
 
 </head>
 <body>
@@ -30,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
 
             <ul class="navbar-nav mr-auto">
-                @*<li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>*@
+                @*<li class="nav-item active"><a asp-controller="Enhancement" asp-action="Index" class="nav-link">Enhancements</a></li>*@
                 @await Html.PartialAsync("LoginPartial")
             </ul>
 
