@@ -60,3 +60,51 @@
 .enhancementContent{
     margin-left: 50px;
 }
+
+
+
+/*            LAYOUT = Header                */
+/*            LAYOUT = Header                */
+/*            LAYOUT = Header                */
+/*            LAYOUT = Header                */
+/*            LAYOUT = Header                */
+/*            LAYOUT = Header                */
+
+
+
+body {
+    background: #fafafa;
+}
+
+.navbarRainbow{
+    display: flex;
+    height: 6px;
+}
+
+.navbarRainbow .colorOne{
+    flex-grow: 1;
+    order: 1;
+    background-color: #77C9D4;
+    height: 6px;
+}
+
+.navbarRainbow .colorTwo{
+    flex-grow: 1;
+    order: 2;
+    background-color: #57BC90;
+    height: 6px;
+}
+
+.navbarRainbow .colorThree{
+    flex-grow: 1;
+    order: 3;
+    background-color: #015249;
+    height: 6px;
+}
+
+.navbarRainbow .colorFour{
+    flex-grow: 1;
+    order: 4;
+    background-color: #A5A5AF;
+    height: 6px;
+}

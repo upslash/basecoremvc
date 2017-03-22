@@ -1,0 +1,75 @@
+﻿@{ 
+    Layout = null;
+}
+
+
+<form id="UploadImageForm" class="dropzone" method="post" asp-action="UploadImage" asp-controller="Image" enctype="multipart/form-data">
+    <div class="fallback">
+        <input name="file" type="file" multiple />
+    </div>
+</form>
+
+
+<script>
+
+    Dropzone.options.UploadImageForm = {
+        dictDefaultMessage: "Drag images here to upload.",
+        acceptedFiles: "image/jpeg,image/png,image/gif",
+        init: function () {
+            this.on("complete", function (data) {
+
+                // With this plugin, the response from MVC is captured via data.xhr.responseText.
+                var parsedResult = JSON.parse(data.xhr.responseText)
+                console.log(parsedResult);
+
+                if (parsedResult.success == true) {
+
+                    var imageWrapper1 = '<img src="';
+                    var imageWrapper2 = '" />';
+                    $.each(parsedResult.urls, function (key, value) {
+                        var imageHtml = imageWrapper1 + value + imageWrapper2;
+                        tinyMCE.activeEditor.execCommand("mceInsertRawHTML", false, imageHtml);
+                    });
+
+                } else {
+                    console.log("Something went wrong while uploading the images to Azure.");
+                }
+
+            });
+        }
+    };
+
+
+    //$("#UploadImageForm").submit(function(e) {
+
+    //    e.preventDefault(); // Cancel normal submit.
+
+    //    var data = new FormData(this);
+
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "/Image/UploadImage",
+    //        data: data,
+    //        cache: false,
+    //        contentType: false,
+    //        processData: false,
+    //        success: function (response) {
+
+    //            console.log("UploadImageForm success");
+    //            var imageWrapper1 = '<img src="';
+    //            var imageWrapper2 = '" />';
+    //            $.each(response, function (key, value) {
+    //                var imageHtml = imageWrapper1 + value + imageWrapper2;
+    //                tinyMCE.activeEditor.execCommand("mceInsertRawHTML", false, imageHtml);
+    //            });
+
+    //        },
+    //        error: function (response) {
+    //            console.log("UploadImageForm error");
+    //            console.log(response);
+    //        }
+    //    });
+
+    //});
+
+</script>

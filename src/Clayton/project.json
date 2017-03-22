@@ -26,8 +26,8 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0"
-  },
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
+    "WindowsAzure.Storage": "8.1.1"  },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",

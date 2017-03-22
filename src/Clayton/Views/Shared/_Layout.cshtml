@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>Code With Clayto</title>
 
     @* Fonts *@
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Crimson+Text|Muli|Open+Sans+Condensed:300" rel="stylesheet">
@@ -14,6 +14,7 @@
     <link href="~/lib/tether/dist/css/tether.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
     <link href="~/lib/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/dropzone/dist/dropzone.css" rel="stylesheet" />
 
     @* Scripts *@
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -22,6 +23,10 @@
     <script src="~/lib/tinymce/tinymce.min.js"></script>
     <script src="~/lib/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
     <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/lib/dropzone/dist/dropzone.js"></script>
+
+
+    <link rel="shortcut icon" href="~/Images/favicon.ico">
 
 </head>
 <body>
@@ -42,19 +47,40 @@
     </nav>
 
 
-    <div class="container">
-        @RenderBody()
-    </div>
+
+        <div class="container">
+
+            @*<div class="navbarRainbow">
+                <div class="colorOne"></div>
+                <div class="colorTwo"></div>
+                <div class="colorThree"></div>
+                <div class="colorFour"></div>
+            </div>*@
 
 
-    <!-- Initialize plugins -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            tinymce.init({ selector: '.tinyeditor' });
-            $('.bootstrapmulti').multiselect();
-        });
-    </script>
 
-</body>
-</html>
+            @RenderBody()
+        </div>
+
+
+        <!-- Initialize plugins -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                tinymce.init({
+                    selector: '.tinyeditor',
+                    plugins: "image",
+                    //images_upload_url: "/Image/TinyMceUpload"
+                });
+
+
+                $('.bootstrapmulti').multiselect();
+            });
+
+
+
+
+        </script>
+
+    </body>
+    </html>
 

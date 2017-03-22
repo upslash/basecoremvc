@@ -43,7 +43,7 @@
     <div class="form-group">
         <label asp-for="Post.Content" class="control-label"></label>
         <div>
-            <textarea asp-for="Post.Content" class="form-control tinyeditor" rows="10"></textarea>
+            <textarea asp-for="Post.Content" class="form-control tinyeditor" id="AddPostTinyMce" rows="10"></textarea>
             <span asp-validation-for="Post.Content" class="text-danger"></span>
         </div>
     </div>
@@ -55,3 +55,6 @@
     </div>
 
 </form>
+
+
+@await Html.PartialAsync("_ImageUpload")

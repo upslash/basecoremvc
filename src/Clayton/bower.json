@@ -6,6 +6,7 @@
     "bootstrap-multiselect": "0.9.13",
     "tinymce": "4.5.4",
     "Font-Awesome": "4.7.0",
-    "jquery-ajax-unobtrusive": "3.2.4"
+    "jquery-ajax-unobtrusive": "3.2.4",
+    "dropzone": "4.3.0"
   }
 }

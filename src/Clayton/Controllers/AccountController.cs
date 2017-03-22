@@ -140,7 +140,6 @@ namespace Clayton.Controllers
                 return PartialView("_ChangePassword", model);
             }
 
-
             // Need to find current user
             // Then reset the password
             // Only close if successful
