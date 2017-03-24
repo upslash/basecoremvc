@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Code With Clayto</title>
+
+    @await Html.PartialAsync("_Resources")
+
+    <link href="~/Content/Design1.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+    <section id="cHeader">
+        <div class="container">
+            <div id="cBrand">
+                <h2>
+                    <a asp-controller="Home" asp-action="Index">Code With Clayto</a>
+                </h2>
+                <p>My corner of the internet where I talk about programming things.</p>
+            </div>
+            <div id="cNavContainer">
+                <nav>
+                    @await Html.PartialAsync("_LoginPartial")
+                </nav>
+            </div>
+            @*<div class="cNavbarRainbow">
+                <div class="colorOne"></div>
+                <div class="colorTwo"></div>
+                <div class="colorThree"></div>
+                <div class="colorFour"></div>
+            </div>*@
+        </div>
+    </section>
+
+    <section id="cBody">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
+
+
+
+    <!-- Initialize plugins -->
+    <script type="text/javascript">
+            $(document).ready(function () {
+                tinymce.init({
+                    selector: '.tinyeditor',
+                    plugins: "image",
+                    //images_upload_url: "/Image/TinyMceUpload"
+                });
+
+
+                $('.bootstrapmulti').multiselect();
+            });
+    </script>
+
+</body>
+</html>
+

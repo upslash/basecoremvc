@@ -8,27 +8,20 @@
     margin-bottom: 10px;
 }
 
-
-/*            LAYOUT = MAIN BLOG AREA                  */
-/*            LAYOUT = MAIN BLOG AREA                  */
-/*            LAYOUT = MAIN BLOG AREA                  */
-/*            LAYOUT = MAIN BLOG AREA                  */
-/*            LAYOUT = MAIN BLOG AREA                  */
-/*            LAYOUT = MAIN BLOG AREA                  */
-
-/* Text */
-
 #blogposts h1, #blogposts  h3, #blogposts  h4, #blogposts h5{
-    font-family: 'Baloo Bhaina', cursive;
-    font-family: 'Muli', sans-serif;
+    /*font-family: 'Baloo Bhaina', cursive;*/
+    /*font-family: 'Muli', sans-serif;*/
+    /*font-family: 'Anton', sans-serif;*/
 }
 
 #blogposts p{
-    font-family: 'Crimson Text', serif;
+    /*font-family: 'Crimson Text', serif;*/
+    /*font-family: 'Oxygen', sans-serif;*/
+    font-family: 'Lato', sans-serif;
 }
 
 .blogEntry h3{
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .postContent{
@@ -48,63 +41,6 @@
     margin-right: 10px;
 }
 
-
-/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
-/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
-/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
-/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
-/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
-/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
-/*            LAYOUT = MAIN ENHANCEMENT AREA                  */
-
 .enhancementContent{
     margin-left: 50px;
-}
-
-
-
-/*            LAYOUT = Header                */
-/*            LAYOUT = Header                */
-/*            LAYOUT = Header                */
-/*            LAYOUT = Header                */
-/*            LAYOUT = Header                */
-/*            LAYOUT = Header                */
-
-
-
-body {
-    background: #fafafa;
-}
-
-.navbarRainbow{
-    display: flex;
-    height: 6px;
-}
-
-.navbarRainbow .colorOne{
-    flex-grow: 1;
-    order: 1;
-    background-color: #77C9D4;
-    height: 6px;
-}
-
-.navbarRainbow .colorTwo{
-    flex-grow: 1;
-    order: 2;
-    background-color: #57BC90;
-    height: 6px;
-}
-
-.navbarRainbow .colorThree{
-    flex-grow: 1;
-    order: 3;
-    background-color: #015249;
-    height: 6px;
-}
-
-.navbarRainbow .colorFour{
-    flex-grow: 1;
-    order: 4;
-    background-color: #A5A5AF;
-    height: 6px;
 }
