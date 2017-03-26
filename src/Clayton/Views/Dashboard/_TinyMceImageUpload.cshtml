@@ -2,8 +2,9 @@
     Layout = null;
 }
 
+<p>Recommended size: *Any*</p>
 
-<form id="UploadImageForm" class="dropzone" method="post" asp-action="UploadImage" asp-controller="Image" enctype="multipart/form-data">
+<form id="UploadImageForm" class="dropzone" method="post" asp-action="UploadMultipleImages" asp-controller="Image" enctype="multipart/form-data">
     <div class="fallback">
         <input name="file" type="file" multiple />
     </div>
@@ -35,6 +36,11 @@
                     console.log("Something went wrong while uploading the images to Azure.");
                 }
 
+            });
+
+            this.on("complete", function (file) {
+                // Remove this file from the dropzone
+                this.removeFile(file);
             });
         }
     };

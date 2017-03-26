@@ -18,9 +18,19 @@
             {
                 <tr>
                     <td>@post.Title</td>
-                    <td>@post.Createdate</td>
+                    <td>@post.CreateDate</td>
                     <td>
-                        <a class="btn btn-sm btn-primary" asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@post.PostId">Edit</a>
+
+                        @if (post.Active)
+                        {
+                            <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="DeactivatePost" asp-route-postId="@post.PostId">Deactivate</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-sm btn-success" asp-controller="Dashboard" asp-action="ActivatePost" asp-route-postId="@post.PostId">Activate</a>
+                        }
+
+                        <a class="btn btn-sm btn-secondary" asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@post.PostId">Edit</a>
                         <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="DeletePost" asp-route-postId="@post.PostId">Delete</a>
                     </td>
                 </tr>
@@ -33,32 +43,39 @@
 
     @if (Model.Posts != null && Model.Posts.Where(x => x.DeletedDate.HasValue).Count() > 0)
     {
-        <table class="table table-danger">
-            <thead>
-                <tr>
-                    <th>Post Title</th>
-                    <th>Deleted Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var post in Model.Posts.Where(x => x.DeletedDate.HasValue))
-                {
+
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#RecentlyDeletedPostsDiv">
+            Click to Expand
+        </button>
+        <div class="collapse" id="RecentlyDeletedPostsDiv">
+            <div class="well">
+                <table class="table table-danger">
+                    <thead>
+                        <tr>
+                            <th>Post Title</th>
+                            <th>Deleted Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var post in Model.Posts.Where(x => x.DeletedDate.HasValue))
+                        {
 
 
-                    <tr>
-                        <th>@post.Title</th>
-                        <td>@post.DeletedDate</td>
-                        <td>
-                            @*<a class="btn btn-sm btn-danger postHardDelete" data-postid="@post.PostId" href="">Hard Delete</a>*@
-                            <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="HardDelete" asp-route-postId="@post.PostId">Hard Delete</a>
-                            <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="RevivePost" asp-route-postId="@post.PostId">Revive Post</a>
-                        </td>
-                    </tr>
+                            <tr>
+                                <th>@post.Title</th>
+                                <td>@post.DeletedDate</td>
+                                <td>
+                                    <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="HardDelete" asp-route-postId="@post.PostId">Hard Delete</a>
+                                    <a class="btn btn-sm btn-danger" asp-controller="Dashboard" asp-action="RevivePost" asp-route-postId="@post.PostId">Revive Post</a>
+                                </td>
+                            </tr>
 
-                }
-            </tbody>
-        </table>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     }
     else
     {

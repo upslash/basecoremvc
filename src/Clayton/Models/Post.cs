@@ -14,7 +14,15 @@ namespace Clayton.Models
         [Required]
         public string Content { get; set; }
 
-        public DateTime Createdate { get; set; }
+        [Required]
+        public string Description { get; set; }
+
+        public bool Active { get; set; }
+
+        [Required]
+        public string DescriptionPicture { get; set; }
+
+        public DateTime CreateDate { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
 

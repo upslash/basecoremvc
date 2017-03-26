@@ -1,0 +1,43 @@
+﻿@{ 
+    Layout = null;
+}
+
+@model Clayton.Models.HomeViewModel
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@inject SignInManager<IdentityUser> SignInManager
+
+@foreach (var post in Model.Posts.Where(x => !x.DeletedDate.HasValue && x.Active))
+{
+    <div class="blogEntry">
+        <h3>@post.Title</h3>
+        <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @post.CreateDate.ToString("MM/dd/yyyy")</p>
+
+        @if (post.PostCategory != null)
+        {
+            <p class="postDetails">
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+
+                @foreach (var cat in post.PostCategory)
+                    {
+                    <span class="postCategory">@Html.Raw(cat.Category.Title)</span>
+                }
+            </p>
+        }
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <p class="postDetails">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@post.PostId">Edit</a>
+            </p>
+        }
+
+
+
+        <div class="postContent">
+            @Html.Raw(post.Content)
+        </div>
+    </div>
+
+}

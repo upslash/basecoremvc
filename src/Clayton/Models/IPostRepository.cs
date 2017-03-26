@@ -21,5 +21,7 @@ namespace Clayton.Models
 
         void HardDelete(int postId);
         void RevivePost(int postId);
+        void ActivatePost(int postId);
+        void DeactivatePost(int postId);
     }
 }

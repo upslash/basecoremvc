@@ -21,7 +21,6 @@ namespace Clayton.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        
         public IActionResult Index()
         {
             DashboardViewModel model = new DashboardViewModel();
@@ -86,6 +85,20 @@ namespace Clayton.Controllers
 
             // Save
             Post newPost = _postRepository.AddPost(model);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult ActivatePost(int postId)
+        {
+            _postRepository.ActivatePost(postId);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult DeactivatePost(int postId)
+        {
+            _postRepository.DeactivatePost(postId);
             return RedirectToAction("Index");
         }
 

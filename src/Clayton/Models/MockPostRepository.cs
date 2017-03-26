@@ -29,7 +29,17 @@ namespace Clayton.Models
             }
         }
 
+        public void ActivatePost(int postId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Post AddPost(PostViewModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeactivatePost(int postId)
         {
             throw new NotImplementedException();
         }

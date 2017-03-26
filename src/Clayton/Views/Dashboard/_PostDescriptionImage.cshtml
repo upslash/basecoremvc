@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+
+<p>Recommended size: 400x150 (width/height)</p>
+<form id="UploadDescriptionImageForm" class="dropzone" method="post" asp-action="UploadSingleImage" asp-controller="Image" enctype="multipart/form-data">
+    <div class="fallback">
+        <input name="file" type="file" multiple />
+    </div>
+</form>
+
+<script>
+
+    Dropzone.options.UploadDescriptionImageForm = {
+        maxFiles: 1,
+        dictDefaultMessage: "Drag post image here.",
+        acceptedFiles: "image/jpeg,image/png,image/gif",
+        init: function () {
+
+            this.on("complete", function (data) {
+                // With this plugin, the response from MVC is captured via data.xhr.responseText.
+                var parsedResult = JSON.parse(data.xhr.responseText)
+                console.log(parsedResult);
+                if (parsedResult.success == true) {
+                    // Populate URL into form input
+                    $("#PostDescriptionPictureUrl").val(parsedResult.url);
+
+                    // Remove this file from the dropzone
+                    this.removeFile(data);
+
+                } else {
+                    console.log("Something went wrong while uploading the images to Azure.");
+                }
+            });
+
+            //this.on("complete", function(file) {
+            //    // Remove this file from the dropzone
+            //    this.removeFile(file);
+            //});
+
+            this.on("maxfilesexceeded", function (file) {
+                alert("No moar files please!");
+            });
+        }
+    };
+
+</script>

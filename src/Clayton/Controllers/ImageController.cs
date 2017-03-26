@@ -37,7 +37,7 @@ namespace Clayton.Controllers
         //}
 
         [HttpPost]
-        public async Task<JsonResult> UploadImage()
+        public async Task<JsonResult> UploadMultipleImages()
         {
             List<string> imageUrls = new List<string>();
             if(Request.Form != null && Request.Form.Files != null)
@@ -55,6 +55,25 @@ namespace Clayton.Controllers
                 return Json(new { success = true, urls = imageUrls });
             }
            
+            return Json(new { success = false });
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> UploadSingleImage()
+        {
+            if (Request.Form != null && Request.Form.Files != null)
+            {
+                string imageUrl = String.Empty;
+                IFormFile file = Request.Form.Files.FirstOrDefault();
+                if (file != null & file.Length > 0)
+                {
+                    AzureHelper azureImage = new AzureHelper();
+                    imageUrl = await azureImage.UploadImage(file);
+                }
+
+                return Json(new { success = true, url = imageUrl });
+            }
+
             return Json(new { success = false });
         }
     }

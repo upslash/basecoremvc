@@ -44,3 +44,9 @@
 .enhancementContent{
     margin-left: 50px;
 }
+
+#BlogSidebar{
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+}

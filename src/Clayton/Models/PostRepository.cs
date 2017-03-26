@@ -52,7 +52,7 @@ namespace Clayton.Models
             }
 
             // Add create date
-            post.Createdate = DateTime.Now;
+            post.CreateDate = DateTime.Now;
 
             // Now add many to many cateogry/post relations now that we have the ID
             PostCategory postCategories = new PostCategory();
@@ -75,6 +75,7 @@ namespace Clayton.Models
             if (dataPost != null)
             {
                 dataPost.DeletedDate = DateTime.Now;
+                dataPost.Active = false;
                 _appDbContext.SaveChanges();
             }
             else
@@ -115,6 +116,8 @@ namespace Clayton.Models
             {
                 dataPost.Title = model.Post.Title;
                 dataPost.Content = model.Post.Content;
+                dataPost.Description = model.Post.Description;
+                dataPost.DescriptionPicture = model.Post.DescriptionPicture;
 
                 List<Category> SelectedCategories = new List<Category>();
                 foreach (var catId in model.SelectedCategories)
@@ -169,6 +172,34 @@ namespace Clayton.Models
             if (dataPost != null)
             {
                 dataPost.DeletedDate = null;
+                _appDbContext.SaveChanges();
+            }
+            else
+            {
+                // Add error handling
+            }
+        }
+
+        public void ActivatePost(int postId)
+        {
+            var dataPost = _appDbContext.Posts.Where(x => x.PostId == postId).FirstOrDefault();
+            if (dataPost != null)
+            {
+                dataPost.Active = true;
+                _appDbContext.SaveChanges();
+            }
+            else
+            {
+                // Add error handling
+            }
+        }
+
+        public void DeactivatePost(int postId)
+        {
+            var dataPost = _appDbContext.Posts.Where(x => x.PostId == postId).FirstOrDefault();
+            if (dataPost != null)
+            {
+                dataPost.Active = false;
                 _appDbContext.SaveChanges();
             }
             else

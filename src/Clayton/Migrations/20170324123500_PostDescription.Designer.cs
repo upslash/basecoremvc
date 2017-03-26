@@ -8,9 +8,10 @@ using Clayton.Models;
 namespace Clayton.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170324123500_PostDescription")]
+    partial class PostDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -72,12 +73,10 @@ namespace Clayton.Migrations
                     b.Property<int>("PostId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("Active");
-
                     b.Property<string>("Content")
                         .IsRequired();
 
-                    b.Property<DateTime>("CreateDate");
+                    b.Property<DateTime>("Createdate");
 
                     b.Property<DateTime?>("DeletedDate");
 
