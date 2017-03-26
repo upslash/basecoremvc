@@ -1,0 +1,58 @@
+﻿
+@model Clayton.Models.Post
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@inject SignInManager<IdentityUser> SignInManager
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-9">
+
+            <div id="blogposts">
+
+                <div class="blogEntry">
+                    <h3>@Model.Title</h3>
+                    <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.CreateDate.ToString("MM/dd/yyyy")</p>
+
+                    @if (Model.PostCategory != null)
+                    {
+                        <p class="postDetails">
+                            <i class="fa fa-hashtag" aria-hidden="true"></i>
+
+                            @foreach (var cat in Model.PostCategory)
+                            {
+                                <span class="postCategory">@Html.Raw(cat.Category.Title)</span>
+                            }
+                        </p>
+                    }
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <p class="postDetails">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@Model.PostId">Edit</a>
+                        </p>
+                    }
+
+
+
+                    <div class="postContent">
+                        @Html.Raw(Model.Content)
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-3" id="BlogSidebar">
+
+            @{ Html.RenderPartial("_Sidebar"); }
+
+        </div>
+
+    </div>
+</div>
+

@@ -118,6 +118,7 @@ namespace Clayton.Models
                 dataPost.Content = model.Post.Content;
                 dataPost.Description = model.Post.Description;
                 dataPost.DescriptionPicture = model.Post.DescriptionPicture;
+                dataPost.Slug = model.Post.Slug;
 
                 List<Category> SelectedCategories = new List<Category>();
                 foreach (var catId in model.SelectedCategories)

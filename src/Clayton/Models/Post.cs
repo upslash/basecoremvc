@@ -15,6 +15,9 @@ namespace Clayton.Models
         public string Content { get; set; }
 
         [Required]
+        public string Slug { get; set; }
+
+        [Required]
         public string Description { get; set; }
 
         public bool Active { get; set; }

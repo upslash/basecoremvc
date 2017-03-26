@@ -27,5 +27,12 @@ namespace Clayton.Controllers
             ViewBag.SiteName = "Clayton's new website!";
             return View(model);
         }
+
+        //[Route("post/{id:int?}/{slug}", Name = "PostWithSlug")]
+        public IActionResult ViewPost(int id, string slug)
+        {
+            Post post = _postRepository.GetPostById(id);
+            return View(post);
+        }
     }
 }

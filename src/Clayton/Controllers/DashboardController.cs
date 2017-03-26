@@ -55,6 +55,9 @@ namespace Clayton.Controllers
                 return View(model);
             }
 
+            // Verify slug input is correct
+            model.Post.Slug = model.Post.Slug.Replace(" ", "-").ToLower();
+
             _postRepository.UpdatePost(model);
             return RedirectToAction("Index");
         }
@@ -82,6 +85,9 @@ namespace Clayton.Controllers
                 model.CategoryList = new SelectList(_categoryRepository.GetAll(), "CategoryId", "Title").ToList();
                 return View(model);
             }
+
+            // Verify slug input is correct
+            model.Post.Slug = model.Post.Slug.Replace(" ", "-").ToLower();
 
             // Save
             Post newPost = _postRepository.AddPost(model);

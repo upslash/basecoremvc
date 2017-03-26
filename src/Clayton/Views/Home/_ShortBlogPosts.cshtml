@@ -11,7 +11,10 @@
 @foreach (var post in Model.Posts.Where(x => !x.DeletedDate.HasValue && x.Active).OrderByDescending(x => x.CreateDate))
 {
     <div class="blogEntry">
-        <h3>@post.Title</h3>
+        <h3>
+            <a href="@Url.RouteUrl("PostWithSlug", new { id = post.PostId, slug = post.Slug })">@post.Title</a>
+        </h3>
+        @*<h3>@post.Title</h3>*@
         <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @post.CreateDate.ToString("MM/dd/yyyy")</p>
 
         @if (post.PostCategory != null)
@@ -21,8 +24,10 @@
 
                 @foreach (var cat in post.PostCategory)
                     {
-                    <span class="postCategory">@Html.Raw(cat.Category.Title)</span>
-                }
+                    <span class="postCategory">
+                        @Html.Raw(cat.Category.Title)
+                    </span>
+                    }
             </p>
         }
 

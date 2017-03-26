@@ -88,8 +88,24 @@ namespace Clayton
             // InvalidOperationException: No authentication handler is configured to handle the scheme: Identity.Application
             // http://stackoverflow.com/questions/38968422/no-authentication-handler-is-configured-to-handle-the-scheme
 
-            app.UseIdentity(); 
-            app.UseMvcWithDefaultRoute(); // Sets up MVC middleware with default schema. Routing would need to be setup.
+            app.UseIdentity();
+
+            //app.UseMvcWithDefaultRoute(); // Sets up MVC middleware with default schema. Routing would need to be setup.
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                   name: "PostWithSlug",
+                   template: "post/{id}/{slug}",
+                   defaults: new { controller = "Home", action = "ViewPost" }
+                   );
+
+                //routes.MapRoute("PostWithSlug", "post/{id}/{slug}", new { controller = "Home", action = "ViewPost" });
+
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
 
             DbInitializer.Seed(app); // Seed data if needed
         }
