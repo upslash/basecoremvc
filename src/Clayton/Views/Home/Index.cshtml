@@ -26,9 +26,7 @@
         </div>
 
         <div class="col-3" id="BlogSidebar">
-
-            @{ Html.RenderPartial("_Sidebar"); }
-
+            @await Component.InvokeAsync("SidebarCategories")
         </div>
 
     </div>

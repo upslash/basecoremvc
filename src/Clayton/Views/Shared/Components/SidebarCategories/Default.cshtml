@@ -1,15 +1,18 @@
-﻿@{ 
-    Layout = null;
-}
+﻿
+@model IEnumerable<Clayton.Models.Category>
 
 <h3>Categories</h3>
 
 <ul>
     @foreach (var cat in Model)
     {
-        <li>@cat.Title</li>
+        <li>
+            <a href="@Url.RouteUrl("CategoryWithPosts", new { id = cat.CategoryId, categoryTitle = cat.Title })">@cat.Title</a>
+        </li>
     }
 </ul>
+
+
 
 <h3>Clayton</h3>
 

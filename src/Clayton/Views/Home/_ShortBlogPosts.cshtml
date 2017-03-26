@@ -14,7 +14,6 @@
         <h3>
             <a href="@Url.RouteUrl("PostWithSlug", new { id = post.PostId, slug = post.Slug })">@post.Title</a>
         </h3>
-        @*<h3>@post.Title</h3>*@
         <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @post.CreateDate.ToString("MM/dd/yyyy")</p>
 
         @if (post.PostCategory != null)
@@ -25,7 +24,7 @@
                 @foreach (var cat in post.PostCategory)
                     {
                     <span class="postCategory">
-                        @Html.Raw(cat.Category.Title)
+                        <a href="@Url.RouteUrl("CategoryWithPosts", new { id = cat.CategoryId, categoryTitle = cat.Category.Title })">@cat.Category.Title</a>
                     </span>
                     }
             </p>
@@ -38,10 +37,6 @@
                 <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@post.PostId">Edit</a>
             </p>
         }
-
-        @*<div class="postContent">
-            @Html.Raw(post.Content)
-        </div>*@
 
         <div class="postContent">
             <img src="@post.DescriptionPicture" />

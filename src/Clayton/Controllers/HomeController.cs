@@ -5,19 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Clayton.Models;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Clayton.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IPostRepository _postRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public HomeController(IPostRepository postRepository)
+        public HomeController(IPostRepository postRepository, ICategoryRepository categoryRepository)
         {
-            // Dependency injection
-            // This works because of the Startup.cs file
             _postRepository = postRepository;
+            _categoryRepository = categoryRepository;
         }
 
         public IActionResult Index()
@@ -33,6 +31,11 @@ namespace Clayton.Controllers
         {
             Post post = _postRepository.GetPostById(id);
             return View(post);
+        }
+
+        public IActionResult ViewCategory(int id, string categoryTitle)
+        {
+            return View(_categoryRepository.GetCategoryByIdWithPosts(id));
         }
     }
 }

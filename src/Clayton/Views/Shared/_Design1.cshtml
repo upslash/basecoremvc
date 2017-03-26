@@ -26,12 +26,6 @@
                     @await Html.PartialAsync("_LoginPartial")
                 </nav>
             </div>
-            @*<div class="cNavbarRainbow">
-                <div class="colorOne"></div>
-                <div class="colorTwo"></div>
-                <div class="colorThree"></div>
-                <div class="colorFour"></div>
-            </div>*@
         </div>
     </section>
 
@@ -41,7 +35,10 @@
         </div>
     </section>
 
-
+    @* 
+        Don't use await renderasync here. It will not render javascript correctly for multi select dropdown
+        and potentially cause other issues, too.
+    *@
 
     @{ Html.RenderPartial("_InitializeJavascript"); }
 

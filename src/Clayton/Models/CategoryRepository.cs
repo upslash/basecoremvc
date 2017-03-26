@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -52,6 +53,20 @@ namespace Clayton.Models
         public IEnumerable<Category> GetAll()
         {
             return _appDbContext.Categories;
+        }
+
+        public IEnumerable<Category> GetAllWithPosts()
+        {
+            return _appDbContext.Categories
+                .Include(x => x.PostCategory)
+                .ThenInclude(x => x.Post);
+        }
+
+        public Category GetCategoryByIdWithPosts(int categoryId)
+        {
+            return _appDbContext.Categories.Where(x => x.CategoryId == categoryId)
+                .Include(x => x.PostCategory)
+                .ThenInclude(x => x.Post).FirstOrDefault();
         }
 
         public Category GetById(int id)

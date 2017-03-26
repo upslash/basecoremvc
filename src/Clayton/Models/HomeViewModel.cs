@@ -8,5 +8,7 @@ namespace Clayton.Models
     public class HomeViewModel
     {
         public IEnumerable<Post> Posts { get; set; }
+
+        public IEnumerable<Category> Categories { get; set; }
     }
 }

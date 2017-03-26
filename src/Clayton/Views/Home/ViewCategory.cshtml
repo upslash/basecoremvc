@@ -1,5 +1,4 @@
-﻿
-@model Clayton.Models.Post
+﻿@model Clayton.Models.Category
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 @inject SignInManager<IdentityUser> SignInManager
@@ -11,18 +10,24 @@
         <div class="col-9">
 
             <div id="blogposts">
+                <h3>Viewing posts in: @Model.Title</h3>
+            </div>
 
+            @foreach (var postCategory in Model.PostCategory.Where(x => !x.Post.DeletedDate.HasValue && x.Post.Active))
+            {
                 <div class="blogEntry">
-                    <h3>@Model.Title</h3>
-                    <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.CreateDate.ToString("MM/dd/yyyy")</p>
+                    <h3>
+                        <a href="@Url.RouteUrl("PostWithSlug", new { id = postCategory.Post.PostId, slug = postCategory.Post.Slug })">@postCategory.Post.Title</a>
+                    </h3>
+                    <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @postCategory.Post.CreateDate.ToString("MM/dd/yyyy")</p>
 
-                    @if (Model.PostCategory != null)
+                    @if (postCategory.Category.PostCategory != null)
                     {
                         <p class="postDetails">
                             <i class="fa fa-hashtag" aria-hidden="true"></i>
 
-                            @foreach (var cat in Model.PostCategory)
-                            {
+                            @foreach (var cat in postCategory.Post.PostCategory)
+                    {
                                 <span class="postCategory">
                                     <a href="@Url.RouteUrl("CategoryWithPosts", new { id = cat.CategoryId, categoryTitle = cat.Category.Title })">@cat.Category.Title</a>
                                 </span>
@@ -34,18 +39,17 @@
                     {
                         <p class="postDetails">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@Model.PostId">Edit</a>
+                            <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@postCategory.Post.PostId">Edit</a>
                         </p>
                     }
 
-
-
                     <div class="postContent">
-                        @Html.Raw(Model.Content)
+                        <img src="@postCategory.Post.DescriptionPicture" />
+                        <p>@postCategory.Post.Description</p>
                     </div>
                 </div>
 
-            </div>
+            }
 
         </div>
 

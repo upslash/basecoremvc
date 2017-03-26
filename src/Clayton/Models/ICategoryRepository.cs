@@ -12,5 +12,9 @@ namespace Clayton.Models
         Category Create(Category category);
         void Delete(int categoryId);
         void Edit(Category category);
+
+        Category GetCategoryByIdWithPosts(int id);
+
+        IEnumerable<Category> GetAllWithPosts();
     }
 }
