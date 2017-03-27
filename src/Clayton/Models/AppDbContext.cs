@@ -14,6 +14,8 @@ namespace Clayton.Models
 
         }
 
+        public DbSet<SiteSettings> SiteSettings { get; set; }
+
         public DbSet<Post> Posts { get; set; }
 
         public DbSet<Category> Categories { get; set; }

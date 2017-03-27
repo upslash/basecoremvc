@@ -12,6 +12,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Clayton.Models.Repositories;
 
 namespace Clayton
 {
@@ -65,6 +66,7 @@ namespace Clayton
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IEnhancementRepository, EnhancementRepository>();
+            services.AddTransient<ISiteSettingsRepository, SiteSettingsRepository>();
 
             services.AddMvc();
         }

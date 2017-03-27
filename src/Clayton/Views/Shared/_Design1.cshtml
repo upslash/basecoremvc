@@ -14,19 +14,7 @@
 
 
     <section id="cHeader">
-        <div class="container">
-            <div id="cBrand">
-                <h2>
-                    <a asp-controller="Home" asp-action="Index">Code With Clayto</a>
-                </h2>
-                <p>My corner of the internet where I talk about programming things.</p>
-            </div>
-            <div id="cNavContainer">
-                <nav>
-                    @await Html.PartialAsync("_LoginPartial")
-                </nav>
-            </div>
-        </div>
+        @await Component.InvokeAsync("Header")
     </section>
 
     <section id="cBody">

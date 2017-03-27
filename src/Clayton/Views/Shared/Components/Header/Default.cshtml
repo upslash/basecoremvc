@@ -1,0 +1,15 @@
+﻿@model Clayton.Models.SiteSettings
+
+<div class="container">
+    <div id="cBrand">
+        <h2>
+            <a asp-controller="Home" asp-action="Index">@Model.Name</a>
+        </h2>
+        <p>@Model.Slogan</p>
+    </div>
+    <div id="cNavContainer">
+        <nav>
+            @await Html.PartialAsync("_LoginPartial")
+        </nav>
+    </div>
+</div>
