@@ -1,74 +1,35 @@
 ﻿
-/*.cNavbarRainbow{
-    display: flex;
-    height: 6px;
-}
-
-.cNavbarRainbow .colorOne{
-    flex-grow: 1;
-    order: 1;
-    background-color: #77C9D4;
-    height: 6px;
-}
-
-.cNavbarRainbow .colorTwo{
-    flex-grow: 1;
-    order: 2;
-    background-color: #57BC90;
-    height: 6px;
-}
-
-.cNavbarRainbow .colorThree{
-    flex-grow: 1;
-    order: 3;
-    background-color: #015249;
-    height: 6px;
-}
-
-.cNavbarRainbow .colorFour{
-    flex-grow: 1;
-    order: 4;
-    background-color: #A5A5AF;
-    height: 6px;
-}*/
-
 #cHeader{
     position: relative;
-    background-image: url("../Images/header-bg.png");
-    background-repeat: repeat;
-    min-height: 140px;
     padding:0;
     margin:0;
-    border-bottom: 1px solid #ccc;
+    border-top: 3px solid #405d9f;
+    background-color: #232323;
+    border-bottom: 3px solid #232323;
 }
 
 body {
-    background: #fafafa;
+    /*background: #fafafa;*/
+    font-family: 'Open Sans', sans-serif;
 }
 
 
 #cNavContainer nav {
-    position: absolute;
-    top: 0px;
-    right: 0px;
 }
 
 #cNavContainer nav a {
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #A5A5AF;
-    border-bottom: 4px solid #A5A5AF;
+    padding: 5px 10px;
+    color: #8a8a8a;
     text-decoration: none;
     -webkit-transition: 0.5s ease;
     transition: 0.5s ease;
-
     text-align: center;
     vertical-align: middle;
     line-height: 40px;
+    font-size: 14px;
 }
 
 #cNavContainer nav a:hover, #cNavContainer nav a.cActive {
-    background-color: #57BC90;
     color: #fff;
 }
 
@@ -78,27 +39,34 @@ body {
 }
 
 #cBrand{
-    position: absolute;
-    top: 38px;
-    left: 15px;
+    display: flex;
 }
 
-#cBrand h2{
-    font-size: 45px;
-    color:#57BC90;
-    font-family: 'Lato', sans-serif;
-    font-family: 'Oxygen', sans-serif;
-    font-family: 'Anton', sans-serif;
+#cBrandName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
 }
 
-#cBrand h2 a {
-    color:#57BC90;
+#cBrandLogo{
+    height: 50px;
+    width: auto;
+}
+
+#cBrandName{
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#cBrandName a {
+    color:#fff;
 }
 
 #cBrand p {
     font-size: 16px;
     font-style: italic;
-    color: #777;
+    color: #fff;
 }
 
 pre {

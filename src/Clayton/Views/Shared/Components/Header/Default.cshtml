@@ -2,14 +2,18 @@
 
 <div class="container">
     <div id="cBrand">
-        <h2>
+        <img id="cBrandLogo" src="~/Images/logo.png" />
+        <h2 id="cBrandName">
             <a asp-controller="Home" asp-action="Index">@Model.Name</a>
         </h2>
-        <p>@Model.Slogan</p>
+        @*<p>@Model.Slogan</p>*@
     </div>
+
+
     <div id="cNavContainer">
         <nav>
             @await Html.PartialAsync("_LoginPartial")
         </nav>
     </div>
+
 </div>

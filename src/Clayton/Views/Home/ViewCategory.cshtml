@@ -19,29 +19,33 @@
                     <h3>
                         <a href="@Url.RouteUrl("PostWithSlug", new { id = postCategory.Post.PostId, slug = postCategory.Post.Slug })">@postCategory.Post.Title</a>
                     </h3>
-                    <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @postCategory.Post.CreateDate.ToString("MM/dd/yyyy")</p>
+                    <div class="blogEntryDetails">
+                        <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @postCategory.Post.CreateDate.ToString("MM/dd/yyyy")</p>
 
-                    @if (postCategory.Category.PostCategory != null)
-                    {
-                        <p class="postDetails">
-                            <i class="fa fa-hashtag" aria-hidden="true"></i>
+                        @if (postCategory.Category.PostCategory != null)
+                        {
+                            <p class="postDetails">
+                                <i class="fa fa-hashtag" aria-hidden="true"></i>
 
-                            @foreach (var cat in postCategory.Post.PostCategory)
-                    {
-                                <span class="postCategory">
-                                    <a href="@Url.RouteUrl("CategoryWithPosts", new { id = cat.CategoryId, categoryTitle = cat.Category.Title })">@cat.Category.Title</a>
-                                </span>
-                            }
-                        </p>
-                    }
+                                @foreach (var cat in postCategory.Post.PostCategory)
+                                {
+                                            <span class="postCategory">
+                                                <a href="@Url.RouteUrl("CategoryWithPosts", new { id = cat.CategoryId, categoryTitle = cat.Category.Title })">@cat.Category.Title</a>
+                                            </span>
+                                        }
+                                    </p>
+                                }
 
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <p class="postDetails">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@postCategory.Post.PostId">Edit</a>
-                        </p>
-                    }
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <p class="postDetails">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@postCategory.Post.PostId">Edit</a>
+                            </p>
+                        }
+                    </div>
+
+                    
 
                     <div class="postContent">
                         <img src="@postCategory.Post.DescriptionPicture" />

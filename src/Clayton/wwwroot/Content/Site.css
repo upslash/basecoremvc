@@ -1,5 +1,9 @@
 ﻿/*http://rubentd.com/blog/creating-a-multiplayer-game-with-node-js/*/
 
+p, h1, h2, h3, h4, h5{
+    color: #555;
+}
+
 #DashboardContainer h3{
     margin: 20px 0;
 }
@@ -9,24 +13,39 @@
 }
 
 #blogposts h1, #blogposts  h3, #blogposts  h4, #blogposts h5{
-    /*font-family: 'Baloo Bhaina', cursive;*/
-    /*font-family: 'Muli', sans-serif;*/
-    /*font-family: 'Anton', sans-serif;*/
 }
 
 #blogposts p{
-    /*font-family: 'Crimson Text', serif;*/
-    /*font-family: 'Oxygen', sans-serif;*/
     font-family: 'Lato', sans-serif;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .blogEntry h3{
     font-size: 30px;
 }
 
+.blogEntry h3 a{
+    color: #555;
+
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+}
+
+.blogEntry h3 a:hover{
+    text-decoration: none;
+    color: #000;
+}
+
 .postContent{
     margin-top: 20px;
     font-size: 18px;
+}
+
+.blogEntryDetails{
+    padding: 10px;
+    background-color: #fafafa;
 }
 
 .postDetails{
@@ -47,6 +66,5 @@
 
 #BlogSidebar{
     padding: 10px;
-    background-color: #eee;
     border-radius: 10px;
 }
