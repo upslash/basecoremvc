@@ -30,12 +30,36 @@ namespace Clayton.Controllers
         public IActionResult ViewPost(int id, string slug)
         {
             Post post = _postRepository.GetPostById(id);
-            return View(post);
+            if(post != null && post.Slug == slug && post.Active && !post.DeletedDate.HasValue)
+            {
+                ViewBag.Title = " - " + post.Title;
+                return View(post);
+            }
+            else
+            {
+                // Don't return the post if it's been deleted or it is inactive.
+                ViewBag.Error = "Oops. We could not find that post.";
+                ViewBag.Title = " - Could not find post.";
+
+                return View(new Post());
+            }
         }
 
         public IActionResult ViewCategory(int id, string categoryTitle)
         {
-            return View(_categoryRepository.GetCategoryByIdWithPosts(id));
+            Category cat = _categoryRepository.GetCategoryByIdWithPosts(id);
+            if(cat != null && cat.Title == categoryTitle)
+            {
+                ViewBag.Title = " - Posts in " + cat.Title;
+                return View(cat);
+            }
+            else
+            {
+                ViewBag.Error = "Oops. We could not find that category.";
+                ViewBag.Title = " - Could not find category";
+                return View();
+            }
+           
         }
     }
 }

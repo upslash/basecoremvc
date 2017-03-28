@@ -12,9 +12,9 @@
 {
     <div class="blogEntry">
 
-        <h3>
+        <h2>
             <a href="@Url.RouteUrl("PostWithSlug", new { id = post.PostId, slug = post.Slug })">@post.Title</a>
-        </h3>
+        </h2>
 
         <div class="blogEntryDetails">
             <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @post.CreateDate.ToString("MM/dd/yyyy")</p>

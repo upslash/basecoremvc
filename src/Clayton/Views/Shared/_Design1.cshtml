@@ -3,8 +3,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Code With Clayto</title>
-
+    <meta name="description" content="Code with Clayto is a collection of programming how-tos and guides written by Clayton Rice.">
+    <meta name="author" content="Clayton Rice">
+    <meta name="keywords" cointent="clayton rice, clayto, programming, how to, guide, .net, mvc">
+    <title>Code With Clayto @ViewBag.Title</title>
     @await Html.PartialAsync("_Resources")
 
     <link href="~/Content/Design1.css" rel="stylesheet" />
@@ -22,11 +24,6 @@
             @RenderBody()
         </div>
     </section>
-
-    @* 
-        Don't use await renderasync here. It will not render javascript correctly for multi select dropdown
-        and potentially cause other issues, too.
-    *@
 
     @{ Html.RenderPartial("_InitializeJavascript"); }
 

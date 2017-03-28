@@ -7,8 +7,15 @@
             $(document).ready(function () {
                 tinymce.init({
                     selector: '.tinyeditor',
-                    plugins: "image",
-                    //images_upload_url: "/Image/TinyMceUpload"
+                    content_css: "/Content/CustomTinyMce.css",
+                    plugins: "image, link",
+                    style_formats: [
+                       { title: 'Bold text', inline: 'strong' },
+                       { title: 'H3', inline: 'span', styles: { color: '#ff0000' } },
+                       { title: 'Name Space', inline: 'span', classes: 'entryNamespace' },
+                       //{ title: 'Namespace', inline: 'span', styles: { color: '#c7254e', backgroundColor: '#f9f2f4', padding: '5px' } },
+                       //{ title: 'Badge', inline: 'span', styles: { display: 'inline-block', border: '1px solid #2276d2', 'border-radius': '5px', padding: '2px 5px', margin: '0 2px', color: '#2276d2' } },
+                    ],
                 });
 
 

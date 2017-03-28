@@ -1,0 +1,10 @@
+﻿@{ 
+    Layout = "_LabLayout";
+}
+
+<form method="post" asp-action="UploadImage" asp-controller="Lab" enctype="multipart/form-data">
+    <div class="form-group">
+        <input class="form-control" type="file" name="files" multiple />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>

@@ -4,52 +4,62 @@
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 @inject SignInManager<IdentityUser> SignInManager
 
-
 <div class="container">
     <div class="row">
 
         <div class="col-9">
 
-            <div id="blogposts">
-
-                <div class="blogEntry">
-                    <h3>@Model.Title</h3>
-
-                    <div class="blogEntryDetails">
-                        <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.CreateDate.ToString("MM/dd/yyyy")</p>
-
-                        @if (Model.PostCategory != null)
-                        {
-                            <p class="postDetails">
-                                <i class="fa fa-hashtag" aria-hidden="true"></i>
-
-                                @foreach (var cat in Model.PostCategory)
-                                {
-                                    <span class="postCategory">
-                                        <a href="@Url.RouteUrl("CategoryWithPosts", new { id = cat.CategoryId, categoryTitle = cat.Category.Title })">@cat.Category.Title</a>
-                                    </span>
-                                }
-                            </p>
-                        }
-
-                        @if (SignInManager.IsSignedIn(User))
-                        {
-                            <p class="postDetails">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@Model.PostId">Edit</a>
-                            </p>
-                        }
-
-                    </div>
-
-                    
-
-                    <div class="postContent">
-                        @Html.Raw(Model.Content)
-                    </div>
+            @if (!String.IsNullOrEmpty(ViewBag.Error))
+            {
+                <div class="alert alert-danger" role="alert">
+                    <strong>Oh snap!</strong> @ViewBag.Error
                 </div>
+            }
+            else
+            {
+                <div id="blogposts">
 
-            </div>
+                    <div class="blogEntry">
+                        <h2>@Model.Title</h2>
+
+                        <div class="blogEntryDetails">
+                            <p class="postDetails"><i class="fa fa-calendar" aria-hidden="true"></i> @Model.CreateDate.ToString("MM/dd/yyyy")</p>
+
+                            @if (Model.PostCategory != null)
+                            {
+                                <p class="postDetails">
+                                    <i class="fa fa-hashtag" aria-hidden="true"></i>
+
+                                    @foreach (var cat in Model.PostCategory)
+                                    {
+                                        <span class="postCategory">
+                                            <a href="@Url.RouteUrl("CategoryWithPosts", new { id = cat.CategoryId, categoryTitle = cat.Category.Title })">@cat.Category.Title</a>
+                                        </span>
+                                    }
+                                </p>
+                            }
+
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <p class="postDetails">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <a asp-controller="Dashboard" asp-action="EditPost" asp-route-postId="@Model.PostId">Edit</a>
+                                </p>
+                            }
+
+                        </div>
+
+
+
+                        <div class="postContent">
+                            @Html.Raw(Model.Content)
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+            
 
         </div>
 

@@ -17,7 +17,7 @@
             @foreach (var post in Model.Posts.Where(x => !x.DeletedDate.HasValue))
             {
                 <tr>
-                    <td>@post.Title</td>
+                    <td><a href="@Url.RouteUrl("PostWithSlug", new { id = post.PostId, slug = post.Slug })">@post.Title</a></td>
                     <td>@post.CreateDate</td>
                     <td>
 

@@ -95,6 +95,17 @@ namespace Clayton
             //app.UseMvcWithDefaultRoute(); // Sets up MVC middleware with default schema. Routing would need to be setup.
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                   name: "Contact",
+                   template: "contact",
+                   defaults: new { controller = "CWC", action = "Contact" }
+                   );
+
+                routes.MapRoute(
+                   name: "About",
+                   template: "about",
+                   defaults: new { controller = "CWC", action = "About" }
+                   );
 
                 routes.MapRoute(
                    name: "CategoryWithPosts",

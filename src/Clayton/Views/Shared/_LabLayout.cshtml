@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Code with Clayto is a collection of programming how-tos and guides written by Clayton Rice.">
+    <meta name="author" content="Clayton Rice">
+    <meta name="keywords" cointent="clayton rice, clayto, programming, how to, guide, .net, mvc">
+    <title>Code With Clayto</title>
+
+    @* CSS *@
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+
+    @* Scripts *@
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <style>
+
+        body{
+            margin: 100px;
+        }
+        form {
+            width: 400px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+    <div id="LabContent">
+        @RenderBody()
+    </div>
+</body>
+</html>
+
