@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Clayton.Models.ViewModels;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Clayton.Models
+namespace Clayton.Models.Reposistories
 {
     public class MockPostRepository : IPostRepository
     {
@@ -50,6 +49,11 @@ namespace Clayton.Models
         }
 
         public Post GetPostById(int postId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Post> GetRecentPosts(int number)
         {
             throw new NotImplementedException();
         }

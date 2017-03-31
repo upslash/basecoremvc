@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Clayton.Models
+namespace Clayton.Models.ViewModels
 {
-    public class HomeViewModel
+    public class DashboardViewModel
     {
         public IEnumerable<Post> Posts { get; set; }
 

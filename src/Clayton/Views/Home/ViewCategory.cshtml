@@ -19,7 +19,10 @@
                 }
                 else
                 {
-                    <h3>Viewing posts in: @Model.Title</h3>
+                    <div id="ViewCategoryHeader">
+                        <h3>Posts in @Model.Title</h3>
+                    </div>
+                    
 
                     @foreach (var postCategory in Model.PostCategory.Where(x => !x.Post.DeletedDate.HasValue && x.Post.Active))
                     {

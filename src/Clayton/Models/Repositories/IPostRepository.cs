@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Clayton.Models.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Clayton.Models
+namespace Clayton.Models.Reposistories
 {
     public interface IPostRepository
     {
         IEnumerable<Post> Posts { get; }
-
+        IEnumerable<Post> GetRecentPosts(int number);
         IEnumerable<Post> PostsOftheWeek { get; }
 
         Post GetPostById(int postId);

@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Clayton.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace Clayton.Models
+namespace Clayton.Models.Reposistories
 {
     public class PostRepository : IPostRepository
     {
@@ -207,6 +207,16 @@ namespace Clayton.Models
             {
                 // Add error handling
             }
+        }
+
+        public IEnumerable<Post> GetRecentPosts(int number)
+        {
+            return _appDbContext.Posts
+                    .Where(x => !x.DeletedDate.HasValue && x.Active)
+                    .OrderByDescending(x => x.CreateDate)
+                    .Take(number)
+                    .Include(x => x.PostCategory)
+                    .ThenInclude(x => x.Category);
         }
     }
 }

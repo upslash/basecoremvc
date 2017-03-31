@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Clayton.Models.Repositories;
+using Clayton.Models.Reposistories;
 
 namespace Clayton
 {

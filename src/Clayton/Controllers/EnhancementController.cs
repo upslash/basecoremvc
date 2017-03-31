@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Clayton.Models;
+using Clayton.Models.Reposistories;
+using Clayton.Models.ViewModels;
 
 namespace Clayton.Controllers
 {
@@ -21,7 +20,7 @@ namespace Clayton.Controllers
         public IActionResult Index()
         {
             EnhancementViewModel model = new EnhancementViewModel();
-            model.Enhancements = _enhancementRepository.GetAll();
+            model.Enhancements = _enhancementRepository.GetAll().OrderByDescending(x => x.CreateDate);
             return View(model);
         }
 

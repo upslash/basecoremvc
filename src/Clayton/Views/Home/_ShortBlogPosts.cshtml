@@ -2,7 +2,7 @@
     Layout = null;
 }
 
-@model Clayton.Models.HomeViewModel
+@model Clayton.Models.ViewModels.HomeViewModel
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 @inject SignInManager<IdentityUser> SignInManager
@@ -44,7 +44,7 @@
         
 
         <div class="postContent">
-            <img src="@post.DescriptionPicture" />
+            <img class="postContentTeaserImg" src="@post.DescriptionPicture" />
             <p>@post.Description</p>
         </div>
     </div>

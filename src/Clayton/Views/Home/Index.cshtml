@@ -1,5 +1,5 @@
 ﻿
-@model Clayton.Models.HomeViewModel
+@model Clayton.Models.ViewModels.HomeViewModel
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 @inject SignInManager<IdentityUser> SignInManager
@@ -26,7 +26,7 @@
         </div>
 
         <div class="col-3" id="BlogSidebar">
-            @await Component.InvokeAsync("SidebarCategories")
+            @await Component.InvokeAsync("Sidebar")
         </div>
 
     </div>

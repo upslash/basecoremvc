@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Clayton.Models
+namespace Clayton.Models.Reposistories
 {
     public interface IEnhancementRepository
     {
